@@ -62,7 +62,7 @@ The venv should be created inside the Ultralytics folder. This will also create 
 > [dataset/CocoGetClasses.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoGetClasses.py):
 > Extracts the class names from a downloaded COCO format dataset and outputs them in the Yolo training format. Place the script in the same folder as `_annotations.coco.json` and run the script. _Can be run outside of the venv._
 
-> [cocoToYoloAnnotations.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoToYoloAnnotations.py):
+> [dataset/cocoToYoloAnnotations.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoToYoloAnnotations.py):
 > Converts annotations from the COCO format to the Yolo training format. Place the script in the same folder as `_annotations.coco.json` and run the script. _Can be run outside of the venv._
 
 
@@ -77,6 +77,9 @@ This is not meant as a full-fledged guide, but a few guiding steps. For more inf
 
 - Unpack the file and move the train/test/valid-directories into the /dataset/ folder for your project.
 
+![image](https://github.com/MNeMoNiCuZ/yolov8-scripts/assets/60541708/5c72e5f8-531c-4668-918d-bf9c6f925831)
+
+
 ## 2. Dataset preparation
 If you downloaded a Yolov8 dataset, everything should be fine already. Images are placed in `/train/images`, and the annotations are placed in `/train/labels`.
 > [!TIP]
@@ -84,7 +87,7 @@ If you downloaded a Yolov8 dataset, everything should be fine already. Images ar
 
 If you downloaded a COCO dataset, you can use the [dataset/CocoGetClasses.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoGetClasses.py) and [cocoToYoloAnnotations.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoToYoloAnnotations.py) scripts to convert the dataset to yolov8. There's also a built-in command that I didn't know about when I wrote the scripts.
 
-## 3. Data.yaml configuring
+## 3. Data.yaml configuration
 The [dataset/data.yaml](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/data.yaml) must be configured for your dataset.
 
 Edit the file and make sure that the number of classes matches the number of classes of your dataset, as well as the list of class names.
