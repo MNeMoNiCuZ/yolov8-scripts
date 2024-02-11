@@ -1,0 +1,12 @@
+# This config is for using this script in a Google Colab notebook to train using online GPU
+
+path: /content/drive/MyDrive/AI/yolov8/datasets/speechbubble
+train: train
+val: valid
+test: test
+
+# Classes configuration
+nc: 7 # number of classes
+names: ['SpeechBalloons', 'General_speech', 'hit_sound', 'blast_sound', 'narration speech', 'thought_speech', 'roar']
+
+# Use the /dataset/CocoGetClasses.py-script to get the class-info from your coco-dataset if you don't know the number of classes and their names

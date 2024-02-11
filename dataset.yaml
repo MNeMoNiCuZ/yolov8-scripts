@@ -1,0 +1,12 @@
+# This config is for running Yolov8 training locally.
+
+train: dataset/train # contains your training data
+val: dataset/valid # contains your validation data (start with ~10% of your training data here)
+test: dataset/test # contatins your test data (optional). You only need this if you are going to run test scripts from this directory. I would place the images in the '/generate_input'-folder instead.
+
+
+# Classes configuration
+nc: 7 # number of classes
+names: ['SpeechBalloons', 'General_speech', 'hit_sound', 'blast_sound', 'narration speech', 'thought_speech', 'roar']
+
+# Use the /dataset/CocoGetClasses.py-script to get the class-info from your coco-dataset if you don't know the number of classes and their names
