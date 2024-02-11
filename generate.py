@@ -21,12 +21,12 @@ text_prefix = ""  # Text prefix, can be empty
 text_suffix = ""  # Text suffix, can be empty
 
 # Load your trained model
-model_path = './models/speechbubble_x.pt'
+model_path = './models/watermarks_s_yolov8_v1.pt'
 model = YOLO(model_path)
 
 # Classes to detect
 # Example: ['SpeechBalloons', 'General_speech', 'hit_sound', 'blast_sound', 'narration speech', 'thought_speech', 'roar']
-selected_classes = ['SpeechBalloons', 'thought_speech', 'narration speech']
+selected_classes = ['watermark']
 
 # Class override mapping, treats the left side of the mapping as if it was the class of the right side
 # Example: thought_speech annotations will be treated as SpeechBalloons annotations.
