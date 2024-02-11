@@ -80,7 +80,7 @@ This is not meant as a full-fledged guide, but a few guiding steps. For more inf
 ## 2. Dataset preparation
 If you downloaded a Yolov8 dataset, everything should be fine already. Images are placed in `/train/images`, and the annotations are placed in `/train/labels`.
 > [!TIP]
-> You can also have the images and annotations right inside the `/train` folder
+> You can also have both the images and annotations right inside the root of the `/train` folder without any /images and /labels subfolders. The same goes for the valid and test folders.
 
 If you downloaded a COCO dataset, you can use the [dataset/CocoGetClasses.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoGetClasses.py) and [cocoToYoloAnnotations.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoToYoloAnnotations.py) scripts to convert the dataset to yolov8. There's also a built-in command that I didn't know about when I wrote the scripts.
 
