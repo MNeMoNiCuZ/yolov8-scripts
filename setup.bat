@@ -7,7 +7,7 @@ set /p VENV_NAME="Enter the name for your virtual environment (Press Enter for d
 
 :: Create the virtual environment
 echo Creating virtual environment named %VENV_NAME%...
-python -m venv %VENV_NAME%
+python3.11 -m venv %VENV_NAME%
 
 :: Create directories
 echo Creating project directories...
