@@ -26,10 +26,6 @@ The venv should be created inside the Ultralytics folder. This will also create 
 > [!TIP]
 > In the future, you can enter the virtual environment by running `activate_venv.bat`.
 
-## Installation Instructions - Other systems
-> [!CAUTION]
-> I have no idea. Feel free to update this section.
-
 ## Folder structure information
 - **dataset**: Contains your dataset images and annotation files (captions), in subdirectories.
    - **train**: Contains your training data.
