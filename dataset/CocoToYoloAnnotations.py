@@ -7,6 +7,10 @@ Usage:
 1. Place this script in the same directory as your COCO format JSON annotation file.
 2. Modify the 'coco_json' variable below if your COCO file has a different name.
 3. Run the script. It will read the COCO annotations, convert them to YOLO format, and save them in the specified output directory.
+
+Note: The following code should also work. I just found it after creating this script.
+from ultralytics.data.converter import convert_coco
+convert_coco(labels_dir='path/to/coco/annotations/')
 """
 # Imports
 import json
