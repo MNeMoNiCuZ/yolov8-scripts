@@ -1,1 +1,2 @@
-ultralytics>=8.0.232
+ultralytics
+tqdm
