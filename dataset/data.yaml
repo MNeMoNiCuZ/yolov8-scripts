@@ -1,12 +1,12 @@
 # This config is for running Yolov8 training locally.
 
-train: dataset/train # contains your training data
-val: dataset/valid # contains your validation data (start with ~10% of your training data here)
-test: dataset/test # contatins your test data (optional). You only need this if you are going to run test scripts from this directory. I would place the images in the '/generate_input'-folder instead.
+train: train # contains your training data
+val: valid # contains your validation data (start with ~10% of your training data here)
+test: test # contatins your test data (optional). You only need this if you are going to run test scripts from this directory. I would place the images in the '/generate_input'-folder instead.
 
 # Classes configuration
-nc: 2 # number of classes
-names: ['watermark', 'watermark']
+nc: 1 # number of classes
+names: ['watermark']
 
 # Example with multiple classes (https://universe.roboflow.com/yolomanga/speechballoon_comic)
 # nc: 7 # number of classes
