@@ -15,10 +15,16 @@ def main():
     yolov8m.pt # Medium
     yolov8l.pt # Large
     yolov8x.pt # Xtra Large
+
+    yolov8n-seg # Nano Segmentation
+    yolov8s-seg # Small Segmentation
+    yolov8m-seg # Medium Segmentation
+    yolov8l-seg # Large Segmentation
+    yolov8x-seg # Xtra Large Segmentation
     '''
     # User settings
     output_dir = 'training_output'
-    folder_name = 'speechbubble'
+    folder_name = 'watermark'
     starting_model = 'models/yolov8s.pt' # Choose the model size from the list above, will be downloaded
     batch_size = 32 # Batch size for training
     epoch_count = 50 # Number of training epochs
@@ -28,7 +34,7 @@ def main():
         os.makedirs(output_dir)
 
     # Absolute path to dataset.yaml
-    dataset_path = os.path.abspath('dataset.yaml')
+    dataset_path = os.path.abspath('dataset/data.yaml')
 
     # Run the training
     modelYolo = YOLO(starting_model)
