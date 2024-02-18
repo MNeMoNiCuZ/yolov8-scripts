@@ -32,8 +32,8 @@ mask_suffix = ""  # Text suffix, can be empty
 model_path = './models/best.pt'
 model = YOLO(model_path)
 
-# Mode selection: "detection" or "segmentation"
-mode = "segmentation"  # Change to "segmentation" for segmentation mode
+# Mode selection: detection or segmentation
+mode = "detection"
 
 # Split multiple detections or keep them together?
 # Todo
