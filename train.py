@@ -10,11 +10,11 @@ def main():
     # Load a pretrained model
     # Model Options:
     '''
-    yolov8n.pt # Nano
-    yolov8s.pt # Small
-    yolov8m.pt # Medium
-    yolov8l.pt # Large
-    yolov8x.pt # Xtra Large
+    yolov8n.pt # Nano Detection
+    yolov8s.pt # Small Detection
+    yolov8m.pt # Medium Detection
+    yolov8l.pt # Large Detection
+    yolov8x.pt # Xtra Large Detection
 
     yolov8n-seg # Nano Segmentation
     yolov8s-seg # Small Segmentation
