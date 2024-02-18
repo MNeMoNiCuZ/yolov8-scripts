@@ -1,5 +1,5 @@
-# Yolov8 Training & Inference Scripts
-This repository helps you train detection models, as well as use them to generate detection outputs (image and text).
+# Yolov8 Training & Inference Scripts (Bounding box & Segmentation)
+This repository helps you train detection models, as well as use them to generate detection outputs (image and text) for both bounding box detection and pixel segmentation.
 
 > [!IMPORTANT]
 > Requires **Python 3.11** or newer.
@@ -110,7 +110,7 @@ names: ['watermark'] # Class names
 Open `train.py` and edit some parameters.
 ```
 "folder_name" is the output folder name inside the `training_output` directory.
-"starting_model" is which model to use for your training. You can copy the standard yolov8 models from the list above. The Nano-model is the smallest, trains faster, but usually performs worse. And Xtra Large is the opposite.
+"starting_model" is which model to use for your training. You can copy the standard yolov8 models from the list above. The Nano-model is the smallest, trains faster, but usually performs worse. And Xtra Large is the opposite. Use the -seg models if you have a segmentation dataset.
 "epoch_count" how many versions do you wish to train. 50 may be a good starting point. For a small model, or a model with a very small dataset, you could set this to 500. The training will automatically stop if no improvement is made in 50 epochs.
 ```
 
@@ -134,6 +134,7 @@ Copy your output model into the `models` directory, you can also rename it to so
 Open `generate.py` to edit some parameters.
 ```
 "model_path" is the path to your model.
+"mode" should be set to detection or segmentation based on what you want to output
 "selected_classes" is a list of the classes you wish to identify and detect when running the script.
 "class_overrides" is a list of overrides. Use this if you wish to substitute one class with another. This could be useful if the model is trained on the classes in the wrong order, or if you just wish to change the name of the label in the overlay images.
 "confidence_threshold" is the detection confidence needed to make it consider it a positive detection.
