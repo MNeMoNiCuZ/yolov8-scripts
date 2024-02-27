@@ -18,10 +18,11 @@ This repository helps you train detection models, as well as use them to generat
 The venv should be created inside the Ultralytics folder. This will also create a few empty folders for you, and an environment activation script (`activate_venv.bat`). It should also activate the environment for you for the next step.
 
 5. Install torch for your version of CUDA ([Pytorch.org](https://pytorch.org/)):
-   
+Depending on your GPU, it may be cu118, or cu121. You may need to install [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) for this to work.
+
 	`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`.
 
-6. Inside the (venv), install requirements using `pip install -r requirements.txt`.
+7. Inside the (venv), install requirements using `pip install -r requirements.txt`.
 
 > [!TIP]
 > In the future, you can enter the virtual environment by running `activate_venv.bat`.
