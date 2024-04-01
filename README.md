@@ -1,51 +1,64 @@
-# Yolov8 Training & Inference Scripts (Bounding box & Segmentation)
-This repository helps you train detection models, as well as use them to generate detection outputs (image and text) for both bounding box detection and pixel segmentation.
+# YOLOv8 Training & Inference Scripts for Bounding Box and Segmentation
+
+This repository is your guide to training detection models and utilizing them for generating detection outputs (both image and text) for bounding box detection and pixel segmentation tasks.
 
 > [!IMPORTANT]
 > Requires **Python 3.11** or newer.
 
-## Installation Instructions - Windows
-1. Download or git clone this repository to any folder
+## Installation Instructions for Windows
+1. **Clone the Repository**
+   Clone this repository to your local machine using Git:
 `git clone https://github.com/MNeMoNiCuZ/yolov8-scripts`
 
-2. Enter the folder
+
+2. **Navigate to the Repository Folder**
+Change into the cloned repository's directory:
 `cd yolov8-scripts`
 
-3. Git Clone Ultralytics inside this folder
+3. **Clone Ultralytics Repository Inside**
+Clone the Ultralytics repository within the `yolov8-scripts` folder:
 `git clone https://github.com/ultralytics/ultralytics`
 
-4. Run `setup.bat`. It will ask you to enter an environment name. Press Enter to use the defaults. Only change it if you know what you are doing.
-The venv should be created inside the Ultralytics folder. This will also create a few empty folders for you, and an environment activation script (`activate_venv.bat`). It should also activate the environment for you for the next step.
 
-5. Install torch for your version of CUDA ([Pytorch.org](https://pytorch.org/)):
-Depending on your GPU, it may be cu118, or cu121. You may need to install [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) for this to work.
+4. **Run the Setup Script**
+Execute `setup.bat` by double-clicking on it. When prompted, enter an environment name or press Enter to accept the default. This script creates a virtual environment inside the Ultralytics folder, sets up necessary directories, and activates the environment.
+
+5. **Install PyTorch with CUDA Support**
+Based on your system's CUDA version, install PyTorch from [Pytorch.org](https://pytorch.org/). If unsure, you might need to install the [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) first.
 
 	`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`.
+	
+6. **Install Required Python Packages**
+While in the virtual environment, install all required packages:
 
-7. Inside the (venv), install requirements using `pip install -r requirements.txt`.
+`pip install -r requirements.txt`
 
 > [!TIP]
-> In the future, you can enter the virtual environment by running `activate_venv.bat`.
+> To re-enter the virtual environment in the future, run `activate_venv.bat`.
 
-## Folder structure information
-- **dataset**: Contains your dataset images and annotation files (captions), in subdirectories.
-   - **train**: Contains your training data.
-   - **valid**: Contains your validation data (start with ~10% of your training data moved here).
-   - **test**: Contains your test data (optional).
- - **generate_input**: Place the images to test your detection in here. _Note: These could also be placed inside dataset/test as long as you update the generate.py to that directory._
- - **generate_output**: Generated detections and output annotation files are placed here.
- - **models**: Downloaded base models are placed here. Place your models in here when generating.
- - **training_output**: This is where trained models (weights), curves, results and tests will end up after training.
+## Folder Structure
+
+- **dataset**: For dataset images and annotations.
+- **train**: Training data.
+- **valid**: Validation data.
+- **test**: Test data (optional).
+- **generate_input**: Place images here for detection testing.
+- **generate_output**: Where detection outputs and annotations are saved.
+- **models**: For storing base and trained models.
+- **training_output**: Contains trained models, curves, results, and tests.
 	
-## Scripts
-> [!IMPORTANT]
-> Remember to enter the environment to run the scripts.
+## Scripts Overview
 
-> [train.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/train.py):
-> The training script. Configure the training folder name, epoch count, batch size and starting model. It requires the dataset to be properly setup.
+> **Important:** Activate the virtual environment before running any scripts.
 
-> [generate.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/generate.py):
-> The inference script used to generate detection results. Configure the model name, which classes to detect, class overrides
+- **train.py**: Configures and launches model training.
+- **generate.py**: Runs inference to generate detection results.
+- **yoloOutputCopyMatchingImages.py**: Aids in selecting and copying images based on matching names for further processing.
+- **yoloOutputToYoloAnnotations.py**: Converts detection outputs into YOLO training annotation format.
+- **CocoGetClasses.py**: Extracts class names from a COCO dataset for YOLO training.
+- **cocoToYoloAnnotations.py**: Converts COCO annotations to YOLO format.
+
+## Scripts In Detail
 
 > [yoloOutputCopyMatchingImages.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/yoloOutputCopyMatchingImages.py):
 > This script is a small tool to help you select and copy images from one folder, based on matching image names of another folder.
@@ -68,30 +81,24 @@ Depending on your GPU, it may be cu118, or cu121. You may need to install [Cuda 
 
 
 # Training a custom detection model
-This is not meant as a full-fledged guide, but a few guiding steps. For more information, read some [Yolo documentation](https://docs.ultralytics.com/datasets/detect/).
 
-## 1. Downloading a dataset
-- For our example, we will download [this watermark dataset](https://universe.roboflow.com/mfw-feoki/w6_janf) from [Roboflow.com]([https://universe.roboflow.com](https://universe.roboflow.com/mfw-feoki/w6_janf)) by user [MFW](https://universe.roboflow.com/mfw-feoki).
-> [!TIP]
-> Download the dataset in the Yolov8 format.
-![image](https://github.com/MNeMoNiCuZ/yolov8-scripts/assets/60541708/c79a6e7c-3f21-421c-8876-03676918afb8)
+This section is a brief guide on preparing and training a custom detection model.
 
-- Unpack the file and move the train/test/valid-directories into the /dataset/ folder for your project.
+### 1. Downloading a Dataset
 
-![image](https://github.com/MNeMoNiCuZ/yolov8-scripts/assets/60541708/5c72e5f8-531c-4668-918d-bf9c6f925831)
+Download a dataset, like the watermark dataset from Roboflow, in the YOLOv8 format. Unpack and move the directories into the `/dataset/` folder.
+- [Watermark dataset by MFW](https://universe.roboflow.com/mfw-feoki/w6_janf)
 
+![Watermark dataset](https://github.com/MNeMoNiCuZ/yolov8-scripts/assets/60541708/c79a6e7c-3f21-421c-8876-03676918afb8)
 
-## 2. Dataset preparation
-If you downloaded a Yolov8 dataset, everything should be fine already. Images are placed in `/train/images`, and the annotations are placed in `/train/labels`.
-> [!TIP]
-> You can also have both the images and annotations right inside the root of the `/train` folder without any /images and /labels subfolders. The same goes for the valid and test folders.
+### 2. Dataset Preparation
 
-If you downloaded a COCO dataset, you can use the [dataset/CocoGetClasses.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoGetClasses.py) and [cocoToYoloAnnotations.py](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/CocoToYoloAnnotations.py) scripts to convert the dataset to yolov8. There's also a built-in command that I didn't know about when I wrote the scripts.
+Place images in `/train/images` and annotations in `/train/labels`. For COCO datasets, use `CocoGetClasses.py` and `cocoToYoloAnnotations.py` for conversion.
 
-## 3. Data.yaml configuration
-The [dataset/data.yaml](https://github.com/MNeMoNiCuZ/yolov8-scripts/blob/main/dataset/data.yaml) must be configured for your dataset.
+### 3. Configuring data.yaml
 
-Edit the file and make sure that the number of classes matches the number of classes of your dataset, as well as the list of class names.
+Edit `data.yaml` to match your dataset's number of classes and class names.
+
 
 For our watermarks dataset, it should be:
 ```
@@ -107,16 +114,16 @@ names: ['watermark'] # Class names
 > If it is not, you can try downloading the COCO.JSON version of the dataset, and run the CocoGetClasses.py script from this repository to extract the values you need for the dataset.yaml.
 
 
-## 4. Configure train.py
-Open `train.py` and edit some parameters.
+### 4. Setting Up train.py
+Customize training parameters in `train.py` such as folder name, starting model, epoch count.
 ```
 "folder_name" is the output folder name inside the `training_output` directory.
 "starting_model" is which model to use for your training. You can copy the standard yolov8 models from the list above. The Nano-model is the smallest, trains faster, but usually performs worse. And Xtra Large is the opposite. Use the -seg models if you have a segmentation dataset.
 "epoch_count" how many versions do you wish to train. 50 may be a good starting point. For a small model, or a model with a very small dataset, you could set this to 500. The training will automatically stop if no improvement is made in 50 epochs.
 ```
 
-## 5. Run train.py
-While inside the environment, run `python train.py` to launch the training.
+### 5. Running train.py
+Execute `train.py` to start the training process. Models and results will be saved in the `training_output` directory.
 
 Hopefully, you should have something like this now:
 ![image](https://github.com/MNeMoNiCuZ/yolov8-scripts/assets/60541708/5cbc9997-5274-42ca-a193-57cd553e5a91)
@@ -127,8 +134,9 @@ You can find test results and your models in the `training_output` directory.
 
 The script will always save your latest model (last.pt) and the currently best performing model (best.pt), in the /training_output/project_name/weights/ directory.
 
-## 6. Generate / Detect / Test your model
-Copy your output model into the `models` directory, you can also rename it to something suitable, like `watermarks_s_yolov8_v1.pt`.
+### 6. Testing Your Model
+After training, use `generate.py` with your model to detect classes on new images. Place test images in `/generate_input` and run the script to generate outputs in `/generate_output`.
+Copy your output model into the `models` directory. Now is a good time to rename it to something suitable, like `watermarks_s_yolov8_v1.pt`.
 > [!TIP]
 > You may want to try both the `last.pt` and `best.pt` separately to see which model perfoms the best for you.
 
