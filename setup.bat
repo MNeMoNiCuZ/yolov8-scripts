@@ -1,41 +1,28 @@
 @echo off
 setlocal
 
-:: Prompt for virtual environment name with default 'venv'
+:: Prompt for Python path with a default value
+set PYTHON_PATH=python
+set /p PYTHON_PATH="Enter the path to your Python executable (Press Enter for default 'python'): "
+
+:: Prompt for virtual environment name with default 'ultralytics/ultralytics-venv'
 set VENV_NAME=ultralytics/ultralytics-venv
 set /p VENV_NAME="Enter the name for your virtual environment (Press Enter for default 'ultralytics/ultralytics-venv'): "
 
 :: Create the virtual environment
 echo Creating virtual environment named %VENV_NAME%...
-python3.11 -m venv %VENV_NAME%
-
-:: Add .gitignore to the virtual environment folder
-echo Creating .gitignore in the %VENV_NAME% folder...
-(
-echo # Ignore all content in the virtual environment directory
-echo *
-echo # Except this file
-echo !.gitignore
-) > "%VENV_NAME%\.gitignore"
+"%PYTHON_PATH%" -m venv %VENV_NAME%
 
 :: Create directories
 echo Creating project directories...
-for %%D in (generate_input generate_output models training_output dataset dataset\test dataset\train dataset\valid) do (
-    if not exist %%D (
-        mkdir %%D
-    )
-)
-
-:: Add .gitignore to the created directories
-echo Creating .gitignore files in the project directories...
-for %%D in (generate_input generate_output models training_output dataset dataset\test dataset\train dataset\valid) do (
-    (
-    echo # Ignore all files in this directory
-    echo *
-    echo # Except this file
-    echo !.gitignore
-    ) > %%D\.gitignore
-)
+mkdir generate_input
+mkdir generate_output
+mkdir models
+mkdir training_output
+mkdir dataset
+mkdir dataset\test
+mkdir dataset\train
+mkdir dataset\valid
 
 :: Generate the activate_venv.bat file
 echo Generating activate_venv.bat...
