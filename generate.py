@@ -35,8 +35,8 @@ model = YOLO(model_path)
 # Mode selection: detection or segmentation
 mode = "detection"
 
-# Split multiple detections or keep them together?
-# Todo
+# Detect all classes or selected classes only
+detect_all_classes = True  # Set to True to detect all classes, False to detect only specific classes below
 
 # Classes to detect
 # Example: ['SpeechBalloons', 'General_speech', 'hit_sound', 'blast_sound', 'narration speech', 'thought_speech', 'roar']
@@ -76,9 +76,10 @@ predefined_colors_with_text = [
     # Add more color pairs if needed
 ]
 
-# Assign colors to each class
-class_colors = {class_name: predefined_colors_with_text[i][0] for i, class_name in enumerate(selected_classes)}
-text_colors = {class_name: predefined_colors_with_text[i][1] for i, class_name in enumerate(selected_classes)}
+# Assign colors to each class, wrapping around if there are more classes than colors
+class_colors = {class_name: predefined_colors_with_text[i % len(predefined_colors_with_text)][0] for i, class_name in enumerate(selected_classes)}
+text_colors = {class_name: predefined_colors_with_text[i % len(predefined_colors_with_text)][1] for i, class_name in enumerate(selected_classes)}
+
 
 # Store input images in a variable
 image_paths = []
@@ -144,7 +145,7 @@ for image_path in tqdm(image_paths, desc='Processing Images'):
                 cls_name = results[0].names[cls_id] if 0 <= cls_id < len(results[0].names) else "Unknown"
                 cls_name = class_overrides.get(cls_name, cls_name)
 
-                if cls_name in selected_classes and conf >= confidence_threshold:
+                if (cls_name in selected_classes or detect_all_classes) and conf >= confidence_threshold:
                     box_color = class_colors.get(cls_name, (255, 0, 0))
                     text_color = text_colors.get(cls_name, 'black')
                     draw.rectangle([x1, y1, x2, y2], outline=box_color, width=7)
