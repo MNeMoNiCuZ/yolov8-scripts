@@ -7,26 +7,31 @@ This repository is your guide to training detection models and utilizing them fo
 
 ## Installation Instructions for Windows
 1. **Clone the Repository**
-   Clone this repository to your local machine using Git:
+   
+Clone this repository to your local machine using Git:
 `git clone https://github.com/MNeMoNiCuZ/yolov8-scripts`
 
 
 2. **Navigate to the Repository Folder**
+   
 Change into the cloned repository's directory:
 `cd yolov8-scripts`
 
-3. **Clone Ultralytics Repository Inside**
+3. **Clone Ultralytics Repository**
+   
 Clone the Ultralytics repository within the `yolov8-scripts` folder:
 `git clone https://github.com/ultralytics/ultralytics`
 
 
 4. **Run the Setup Script**
+   
 Execute `setup.bat` by double-clicking on it. When prompted, enter an environment name or press Enter to accept the default. This script creates a virtual environment inside the Ultralytics folder, sets up necessary directories, and activates the environment.
 
 5. **Install PyTorch with CUDA Support**
+   
 Based on your system's CUDA version, install PyTorch from [Pytorch.org](https://pytorch.org/). If unsure, you might need to install the [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) first.
 
-	`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`.
+	pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118.
 	
 6. **Install Required Python Packages**
 While in the virtual environment, install all required packages:
