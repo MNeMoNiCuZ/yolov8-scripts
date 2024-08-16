@@ -29,9 +29,8 @@ Execute `setup.bat` by double-clicking on it. When prompted, enter an environmen
 
 5. **Install PyTorch with CUDA Support**
    
-Based on your system's CUDA version, install PyTorch from [Pytorch.org](https://pytorch.org/). If unsure, you might need to install the [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) first.
-
-	pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118.
+Based on your system's CUDA version, install PyTorch from [Pytorch.org](https://pytorch.org/). 
+If unsure, you might need to install the [Cuda Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) first.
 	
 6. **Install Required Python Packages**
 While in the virtual environment, install all required packages:
